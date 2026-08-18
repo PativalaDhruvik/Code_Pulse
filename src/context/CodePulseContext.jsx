@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import * as api from '../api';
+import { DEFAULT_ERRORS } from './initialErrors';
 
 export const CodePulseContext = createContext();
 
@@ -10,7 +11,7 @@ export function CodePulseProvider({ children }) {
   });
 
   const [submissions, setSubmissions] = useState([]);
-  const [errorLibrary, setErrorLibrary] = useState([]);
+  const [errorLibrary, setErrorLibrary] = useState(DEFAULT_ERRORS);
   const [loading, setLoading] = useState(false);
 
   // Load errors on startup
@@ -18,7 +19,9 @@ export function CodePulseProvider({ children }) {
     const loadErrors = async () => {
       try {
         const errors = await api.getErrors();
-        setErrorLibrary(errors);
+        if (Array.isArray(errors) && errors.length > 0) {
+          setErrorLibrary(errors);
+        }
       } catch (err) {
         console.error("Failed to load error library from Django backend:", err);
       }
@@ -37,7 +40,9 @@ export function CodePulseProvider({ children }) {
             api.getErrors()
           ]);
           setSubmissions(subs);
-          setErrorLibrary(errors);
+          if (Array.isArray(errors) && errors.length > 0) {
+            setErrorLibrary(errors);
+          }
         } catch (err) {
           console.error("Failed to load user data from Django backend:", err);
           // Try loading individually if combined call fails
@@ -47,7 +52,9 @@ export function CodePulseProvider({ children }) {
           } catch (e) { }
           try {
             const errors = await api.getErrors();
-            setErrorLibrary(errors);
+            if (Array.isArray(errors) && errors.length > 0) {
+              setErrorLibrary(errors);
+            }
           } catch (e) { }
         } finally {
           setLoading(false);

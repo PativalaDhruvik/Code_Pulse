@@ -12,33 +12,45 @@ from .initial_data import INITIAL_ERRORS, INITIAL_PUZZLES
 
 def check_and_seed_db():
     """Seed ErrorDefinitions and PracticePuzzles if the DB is empty."""
-    if ErrorDefinition.objects.count() == 0:
-        for err in INITIAL_ERRORS:
-            ErrorDefinition.objects.get_or_create(
-                error_id=err["id"],
-                defaults={
-                    "name": err["name"],
-                    "severity": err["severity"],
-                    "category": err["category"],
-                    "description": err["description"],
-                    "details_newbie": err["details_newbie"],
-                    "details_comfortable": err["details_comfortable"],
-                    "details_facts": err["details_facts"],
-                    "broken": err.get("broken", ""),
-                    "fixed": err.get("fixed", "")
-                }
-            )
-    if PracticePuzzle.objects.count() == 0:
-        for puz in INITIAL_PUZZLES:
-            PracticePuzzle.objects.get_or_create(
-                key=puz["key"],
-                defaults={
-                    "error_name": puz["error_name"],
-                    "broken": puz["broken"],
-                    "hint": puz["hint"],
-                    "solution": puz["solution"]
-                }
-            )
+    try:
+        from django.core.management import call_command
+        from django.db import connection
+        tables = connection.introspection.table_names()
+        if "api_errordefinition" not in tables:
+            call_command('migrate', interactive=False)
+    except Exception as e:
+        print("Migration check error:", e)
+
+    try:
+        if ErrorDefinition.objects.count() == 0:
+            for err in INITIAL_ERRORS:
+                ErrorDefinition.objects.get_or_create(
+                    error_id=err["id"],
+                    defaults={
+                        "name": err["name"],
+                        "severity": err["severity"],
+                        "category": err["category"],
+                        "description": err["description"],
+                        "details_newbie": err["details_newbie"],
+                        "details_comfortable": err["details_comfortable"],
+                        "details_facts": err["details_facts"],
+                        "broken": err.get("broken", ""),
+                        "fixed": err.get("fixed", "")
+                    }
+                )
+        if PracticePuzzle.objects.count() == 0:
+            for puz in INITIAL_PUZZLES:
+                PracticePuzzle.objects.get_or_create(
+                    key=puz["key"],
+                    defaults={
+                        "error_name": puz["error_name"],
+                        "broken": puz["broken"],
+                        "hint": puz["hint"],
+                        "solution": puz["solution"]
+                    }
+                )
+    except Exception as e:
+        print("Seeding DB error:", e)
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
