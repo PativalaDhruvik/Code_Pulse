@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -79,10 +80,23 @@ WSGI_APPLICATION = 'codepulse_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+if os.environ.get('VERCEL'):
+    tmp_db = Path('/tmp/db.sqlite3')
+    src_db = BASE_DIR / 'db.sqlite3'
+    if not tmp_db.exists() and src_db.exists():
+        import shutil
+        try:
+            shutil.copy2(src_db, tmp_db)
+        except Exception:
+            pass
+    db_path = tmp_db
+else:
+    db_path = BASE_DIR / 'db.sqlite3'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': db_path,
     }
 }
 
