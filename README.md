@@ -13,7 +13,7 @@
 ## 🌐 Live Demo & Repository
 
 - **GitHub Repository**: [PativalaDhruvik/Code_Pulse](https://github.com/PativalaDhruvik/Code_Pulse.git)
-- **Live Demo Platform**: Deployable on **Vercel** as a full-stack Serverless Application.
+- **Live Demo URL**: 🚀 [https://code-pulse-eta.vercel.app/](https://code-pulse-eta.vercel.app/)
 
 ---
 
