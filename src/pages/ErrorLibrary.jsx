@@ -296,17 +296,21 @@ export default function ErrorLibrary() {
                           ].map(tab => (
                             <button
                               key={tab.id}
-                              onClick={() => setActiveTab(tab.id)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveTab(tab.id);
+                              }}
                               style={{
                                 flex: 1,
                                 padding: '6px 8px',
                                 borderRadius: '4px',
                                 border: 'none',
-                                background: activeTab === tab.id ? 'rgba(255,255,255,0.08)' : 'transparent',
+                                background: activeTab === tab.id ? 'rgba(255,255,255,0.12)' : 'transparent',
                                 color: activeTab === tab.id ? 'var(--text-primary)' : 'var(--text-secondary)',
                                 cursor: 'pointer',
                                 fontSize: '0.75rem',
-                                fontWeight: '600'
+                                fontWeight: '600',
+                                transition: 'all 0.2s'
                               }}
                             >
                               {tab.label}
@@ -321,15 +325,25 @@ export default function ErrorLibrary() {
                           border: '1px solid var(--border-color)',
                           borderRadius: '8px',
                           padding: '14px',
-                          fontSize: '0.8rem',
+                          fontSize: '0.82rem',
                           lineHeight: '1.5'
                         }}>
-                          {activeTab === 'newbie' && <p>{err.details.newbie}</p>}
-                          {activeTab === 'comfortable' && <p>{err.details.comfortable}</p>}
+                          {activeTab === 'newbie' && (
+                            <p style={{ margin: 0, color: 'var(--text-primary)' }}>
+                              {err.details_newbie || err.details?.newbie || err.description || "No newbie explanation available."}
+                            </p>
+                          )}
+                          {activeTab === 'comfortable' && (
+                            <p style={{ margin: 0, color: 'var(--text-primary)' }}>
+                              {err.details_comfortable || err.details?.comfortable || err.description || "No comfortable explanation available."}
+                            </p>
+                          )}
                           {activeTab === 'facts' && (
                             <div>
-                              <p style={{ fontWeight: '600', color: 'var(--accent-success)' }}>Fix Recommendation:</p>
-                              <p style={{ marginTop: '4px' }}>{err.details.facts}</p>
+                              <p style={{ fontWeight: '600', color: 'var(--accent-success)', margin: '0 0 4px 0' }}>Fix Recommendation:</p>
+                              <p style={{ margin: 0, color: 'var(--text-primary)' }}>
+                                {err.details_facts || err.details?.facts || err.fixed || "Apply clean syntax rules."}
+                              </p>
                             </div>
                           )}
                         </div>

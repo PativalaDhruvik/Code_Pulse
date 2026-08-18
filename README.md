@@ -1,130 +1,141 @@
-# CodePulse Studio ⚡
+<div align="center">
 
-[![Vercel Deployment](https://img.shields.io/badge/Deploy%20with-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/new)
-[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
-[![Django](https://img.shields.io/badge/Django-6.0-092E20?style=for-the-badge&logo=django)](https://www.djangoproject.com/)
+# ⚡ CodePulse Studio
+
+### *AI-Assisted Python Code Diagnostics & Interactive Error Telemetry*
+
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-code--pulse--eta.vercel.app-6366F1?style=for-the-badge&logo=vercel)](https://code-pulse-eta.vercel.app/)
+[![React 19](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Django 6.0](https://img.shields.io/badge/Django-6.0-092E20?style=for-the-badge&logo=django)](https://www.djangoproject.com/)
 [![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
-[![Python AST](https://img.shields.io/badge/Python-AST%20%2B%20Gemini-3776AB?style=for-the-badge&logo=python)](https://python.org)
+[![Gemini AI](https://img.shields.io/badge/Google%20Gemini-AI%20Engine-8E75B2?style=for-the-badge&logo=googlegemini)](https://ai.google.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-> **CodePulse Studio** is an AI-assisted Python code diagnostic, error catalog, and interactive debugging platform. It combines Python's Native Abstract Syntax Tree (AST) parser with Google Gemini AI models to detect syntax errors, code smells, and performance bottlenecks, delivering 3-tier educational explanations (Newbie, Comfortable, and Facts).
+<br/>
 
----
+> **CodePulse Studio** is a full-stack developer workspace for Python error diagnosis, interactive learning, and real-time code optimization. Powered by Python's native **Abstract Syntax Tree (AST)** parser combined with **Google Gemini AI**, CodePulse pinpoints exact syntax errors, style anomalies, and logical bugs—delivering **3-tier tailored explanations** for every developer level.
 
-## 🌐 Live Demo & Repository
-
-- **GitHub Repository**: [PativalaDhruvik/Code_Pulse](https://github.com/PativalaDhruvik/Code_Pulse.git)
-- **Live Demo URL**: 🚀 [https://code-pulse-eta.vercel.app/](https://code-pulse-eta.vercel.app/)
+</div>
 
 ---
 
-## ✨ Key Features
+## 🌐 Live Demo & GitHub Repository
 
-1. **⚡ Real-Time Code Analysis Engine**
-   - Combines deterministic **Python AST parsing** with **Google Gemini AI LLM diagnostics**.
-   - Pinpoints exact line numbers, column cursor offsets, and erroneous code words.
-   - Computes code quality scores (0 to 100) and cleanliness status.
-
-2. **🎓 3-Tier Educational Explanations**
-   - **Newbie Mode**: Simple, jargon-free explanations for beginner programmers.
-   - **Comfortable Mode**: Technical breakdown explaining *why* the issue occurs.
-   - **Facts / Solutions**: Direct actionable fix and refactored code block.
-
-3. **📚 Error Library & Interactive Puzzles**
-   - Pre-seeded searchable catalog of common Python errors.
-   - Interactive practice puzzles to hone debugging skills.
-
-4. **📊 Analytics & Diagnostic History**
-   - Built-in analytics dashboard powered by **Recharts**.
-   - Saved submission logs and diagnostic metrics per user session.
+- 🚀 **Live Demo URL**: [https://code-pulse-eta.vercel.app/](https://code-pulse-eta.vercel.app/)
+- 📦 **GitHub Repository**: [PativalaDhruvik/Code_Pulse](https://github.com/PativalaDhruvik/Code_Pulse.git)
 
 ---
 
-## 🏗️ Tech Stack & Architecture
+## 🌟 Key Highlights & Features
 
-- **Frontend**: React 19, React Router v7, Recharts, Vite 6, Modern Dark Glassmorphism UI (Vanilla CSS)
-- **Backend**: Django 6.0 REST Framework, Python `ast`, Google Gemini AI API (`urllib.request`)
-- **Database**: SQLite (Automated seeding + `/tmp` serverless runtime storage)
-- **Deployment Platform**: **Vercel** (Serverless Python API + Static Build)
+| Feature | Description |
+| :--- | :--- |
+| ⚡ **Dual AST + AI Engine** | Combines deterministic Python AST compilation checks with Google Gemini LLM for deep semantic analysis. |
+| 📍 **Precision Cursor Pinpointing** | Identifies exact line numbers, column offsets, and erroneous variable tokens in real time. |
+| 🎓 **3-Tier Educational Views** | Switch seamlessly between **Newbie** (beginner-friendly), **Comfortable** (technical depth), and **Facts** (direct code fix). |
+| 📚 **Interactive Error Library** | 15+ pre-seeded searchable Python syntax warnings, style guidelines, and logic bug definitions. |
+| 🧩 **Practice Debugging Puzzles** | Hands-on coding exercises to test and improve error diagnostics skills. |
+| 📊 **Telemetry Dashboard** | Interactive charts powered by Recharts monitoring error frequencies, cleanliness scores, and submission trends. |
+
+---
+
+## 🎓 3-Tier Educational Explanations
+
+CodePulse turns complex compiler errors into intuitive learning moments:
 
 ```
-[ Frontend: React 19 + Vite ] ──(REST API)──> [ Vercel Serverless Function: api/index.py ]
-                                                        │
-                                                        ▼
-                                            [ Django 6 REST Backend ]
-                                            ├── Python AST Diagnostics
-                                            ├── Google Gemini AI API
-                                            └── SQLite DB (/tmp/db.sqlite3)
+                  ┌─────────────────────────────────────────┐
+                  │          Code Pulse Diagnostic          │
+                  └────────────────────┬────────────────────┘
+                                       │
+         ┌─────────────────────────────┼─────────────────────────────┐
+         ▼                             ▼                             ▼
+  🌱 Newbie Mode                💡 Comfortable Mode           🟢 Just the Facts
+  Simple, jargon-free          Technical explanation of        Actionable solution &
+  analogy for beginners        scope, memory, and AST rules    refactored code block
 ```
 
 ---
 
-## 🚀 Deployment Guide on Vercel (Instead of Render)
+## 🏗️ System Architecture
 
-CodePulse is pre-configured for seamless, zero-config single-command deployment on **Vercel**.
+```mermaid
+graph TD
+    Client[React 19 + Vite Frontend SPA] -->|HTTPS REST API| Vercel[Vercel Serverless Function: api/index.py]
+    Vercel --> Django[Django 6 REST Framework]
+    
+    subgraph Django Core Engine
+        Django --> AST[Python AST Parser]
+        Django --> Gemini[Google Gemini AI API]
+        Django --> DB[(SQLite Database /tmp/db.sqlite3)]
+    end
+    
+    AST -->|Syntax Validation| Diagnostics[Unified Diagnostic Engine]
+    Gemini -->|LLM Code Analysis| Diagnostics
+    Diagnostics -->|JSON Telemetry| Client
+```
 
-### Step 1: Push Code to GitHub
-Ensure your repository is up to date:
+---
+
+## 🚀 Quick Deployment Guide on Vercel
+
+CodePulse is fully configured for zero-config single-command deployment on **Vercel**:
+
+### 1. Push to GitHub
 ```bash
 git add .
-git commit -m "Configure project for Vercel deployment"
+git commit -m "Enhance CodePulse Vercel deployment"
 git push origin main
 ```
 
-### Step 2: Deploy on Vercel
-1. Go to [Vercel Dashboard](https://vercel.com/new).
-2. Click **Add New Project** and select your GitHub repository: `PativalaDhruvik/Code_Pulse`.
-3. Vercel will automatically detect `vercel.json` and configure:
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. *(Optional)* In **Environment Variables**, set:
-   - `GEMINI_API_KEY`: *(Your Google Gemini API key)*
-5. Click **Deploy**. Vercel will build both the React Frontend and the Django Serverless Backend automatically!
+### 2. Deploy on Vercel
+1. Navigate to [Vercel Dashboard](https://vercel.com/new).
+2. Select your repository: **`PativalaDhruvik/Code_Pulse`**.
+3. Set Environment Variable *(optional)*:
+   - `GEMINI_API_KEY`: *(Your Google Gemini API Key)*
+4. Click **Deploy**!
 
 ---
 
 ## 💻 Local Development Setup
 
 ### Prerequisites
-- Node.js (v18+) & `npm`
-- Python 3.10+
+- **Node.js**: v18.0+
+- **Python**: v3.10+
 
 ### Step-by-Step Setup
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/PativalaDhruvik/Code_Pulse.git
-   cd Code_Pulse
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/PativalaDhruvik/Code_Pulse.git
+cd Code_Pulse
 
-2. **Install Node Dependencies**
-   ```bash
-   npm install
-   ```
+# 2. Install Node dependencies
+npm install
 
-3. **Setup Python Virtual Environment**
-   ```bash
-   cd backend
-   python -m venv .venv
-   
-   # On Windows:
-   .venv\Scripts\activate
-   # On macOS/Linux:
-   source .venv/bin/activate
+# 3. Setup Python Backend Virtual Environment
+cd backend
+python -m venv .venv
 
-   pip install -r requirements.txt
-   cd ..
-   ```
+# On Windows:
+.venv\Scripts\activate
+# On macOS/Linux:
+source .venv/bin/activate
 
-4. **Run Development Server (Concurrent Frontend & Backend)**
-   ```bash
-   npm run dev
-   ```
-   - **Frontend**: http://localhost:5173
-   - **Backend API**: http://localhost:8000/api
+pip install -r requirements.txt
+cd ..
+
+# 4. Launch Development Servers (Frontend + Backend concurrently)
+npm run dev
+```
+
+- **Frontend Application**: `http://localhost:5173`
+- **Backend REST API**: `http://localhost:8000/api`
 
 ---
 
-## 📄 License
+<div align="center">
 
-Distributed under the MIT License. See `LICENSE` for details.
+Made with ❤️ by [Pativala Dhruvik](https://github.com/PativalaDhruvik) • Distributed under the **MIT License**
+
+</div>
